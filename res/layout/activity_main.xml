@@ -34,7 +34,7 @@
         android:layout_below="@+id/header" >
 
         <ListView
-            android:id="@+id/listBody"
+            android:id="@+id/listData"
             android:layout_width="match_parent"
             android:layout_height="414dp" >
         </ListView>
@@ -48,18 +48,12 @@
         android:layout_below="@+id/body" >
 
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/btnLoadMore"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="@string/back" />
+            android:text="@string/load_more" />
 
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/next" />
     </LinearLayout>
 
 </RelativeLayout>
