@@ -1632,7 +1632,10 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020030;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
-        public static final int ic_launcher=0x7f020033;
+        public static final int background=0x7f020033;
+        public static final int custom_btn_breaker_bay=0x7f020034;
+        public static final int ic_launcher=0x7f020035;
+        public static final int overflow_menu=0x7f020036;
     }
     public static final class id {
         public static final int action_bar=0x7f090031;
@@ -1648,7 +1651,8 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f09002e;
         public static final int action_mode_bar_stub=0x7f09002d;
         public static final int action_mode_close_button=0x7f090020;
-        public static final int action_settings=0x7f090045;
+        public static final int action_search=0x7f090045;
+        public static final int action_settings=0x7f090049;
         public static final int activity_chooser_view_content=0x7f090021;
         public static final int always=0x7f090014;
         public static final int beginning=0x7f09001b;
@@ -1675,10 +1679,13 @@ containing a value of this type.
         public static final int listData=0x7f090042;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090025;
+        public static final int menu_overflow=0x7f090046;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
         public static final int normal=0x7f09000b;
+        public static final int ordenar_asc=0x7f090047;
+        public static final int ordenar_desc=0x7f090048;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
         public static final int radio=0x7f09002b;
@@ -1759,7 +1766,9 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f030018;
     }
     public static final class menu {
-        public static final int main=0x7f0c0000;
+        public static final int action_bar_menu=0x7f0c0000;
+        public static final int lista_datos=0x7f0c0001;
+        public static final int main=0x7f0c0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1824,6 +1833,9 @@ containing a value of this type.
         public static final int hello_world=0x7f0a0011;
         public static final int load_more=0x7f0a0015;
         public static final int next=0x7f0a0014;
+        public static final int text_ordenar_asc=0x7f0a0017;
+        public static final int text_ordenar_desc=0x7f0a0018;
+        public static final int text_search=0x7f0a0016;
     }
     public static final class style {
         /** 
@@ -2167,6 +2179,7 @@ containing a value of this type.
          */
         public static final int Widget_AppCompat_Toolbar=0x7f0b0034;
         public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0035;
+        public static final int btnStyleBeige=0x7f0b00ed;
     }
     public static final class styleable {
         /**  ============================================ 

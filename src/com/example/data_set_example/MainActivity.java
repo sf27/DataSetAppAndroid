@@ -2,21 +2,25 @@ package com.example.data_set_example;
 
 import java.util.ArrayList;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
 	private TextView					txtInfo;
 	private Button						loadMore;
@@ -49,31 +53,38 @@ public class MainActivity extends ActionBarActivity {
 				Toast.makeText(getApplicationContext(), "Data loaded", Toast.LENGTH_LONG).show();
 			}
 		});
-	}
 
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(
 			Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.action_bar_menu, menu);
+
+		// /boton de busqueda en la barra de acciones
+		MenuItem searchItem = menu.findItem(R.id.action_search);
+		SearchView mSearchView = (SearchView) searchItem.getActionView();
+		System.out.println("Epale: " + mSearchView);
+		searchData(mSearchView);// se encarga de buscar los datos en la lista
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(
 			MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) { return true; }
-		return super.onOptionsItemSelected(item);
+		ArrayAdapter<String> arrayAdapter = (ArrayAdapter<String>) listData.getAdapter();
+		switch (item.getItemId()) {
+			case R.id.ordenar_asc:
+				Toast.makeText(this, "Datos ordenados en forma ascendiente", Toast.LENGTH_SHORT).show();
+				return true;
+			case R.id.ordenar_desc:
+				Toast.makeText(this, "Datos ordenados en forma descendiente", Toast.LENGTH_SHORT).show();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 	public class GetJsonTask extends AsyncTask<String, Void, String> {
@@ -134,4 +145,44 @@ public class MainActivity extends ActionBarActivity {
 		return temp;
 	}
 
+	/**
+	 * Busca datos en la lista y los filtra.
+	 * 
+	 * @param mSearchView
+	 */
+	private void searchData(
+			SearchView mSearchView) {
+		mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+			/**
+			 * Metodo que se ejecuta cuando se presiona aceptar en el campo de
+			 * busqueda de la barra de accion
+			 */
+			@Override
+			public boolean onQueryTextSubmit(
+					String query) {
+				ArrayAdapter<String> arrayAdapter = (ArrayAdapter<String>) listData.getAdapter();
+				Filter filter = arrayAdapter.getFilter();
+				filter.filter(query);
+				arrayAdapter.notifyDataSetChanged();
+				return false;
+			}
+
+			/**
+			 * Metodo que se ejecuta cuando se va escribiendo en el campo de
+			 * busqueda de la barra de accion
+			 */
+			@Override
+			public boolean onQueryTextChange(
+					String newText) {
+				ArrayAdapter<String> arrayAdapter = (ArrayAdapter<String>) listData.getAdapter();
+				Filter filter = arrayAdapter.getFilter();
+				filter.filter(newText);
+				arrayAdapter.notifyDataSetChanged();
+				return false;
+			}
+
+		});
+
+	}
 }
