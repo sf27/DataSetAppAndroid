@@ -1,17 +1,23 @@
 package com.example.data_set_example;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
+
+	TextView	txtInfo;
 
 	@Override
 	protected void onCreate(
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		txtInfo = (TextView) findViewById(R.id.txtInfo);
+		GetJsonTask task = new GetJsonTask(MainActivity.this);
+		task.execute();
 	}
 
 	@Override
@@ -32,4 +38,5 @@ public class MainActivity extends ActionBarActivity {
 		if (id == R.id.action_settings) { return true; }
 		return super.onOptionsItemSelected(item);
 	}
+
 }
