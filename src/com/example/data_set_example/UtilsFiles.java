@@ -21,7 +21,6 @@ public class UtilsFiles {
 	}
 
 	public String requestFile() {
-		String data = null;
 		try {
 
 			InputStream is = activity.getAssets().open("data.json");
@@ -34,8 +33,7 @@ public class UtilsFiles {
 
 			is.close();
 
-			data = new String(buffer, "UTF-8");
-			return data;
+			return new String(buffer, "UTF-8");
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			return null;
