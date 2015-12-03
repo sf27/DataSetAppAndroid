@@ -66,7 +66,6 @@ public class MainActivity extends Activity {
 		// /boton de busqueda en la barra de acciones
 		MenuItem searchItem = menu.findItem(R.id.action_search);
 		SearchView mSearchView = (SearchView) searchItem.getActionView();
-		System.out.println("Epale: " + mSearchView);
 		searchData(mSearchView);// se encarga de buscar los datos en la lista
 		return true;
 	}
@@ -100,9 +99,6 @@ public class MainActivity extends Activity {
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			// dialog.setIndeterminate(true);
-			// dialog.setMessage("Please wait..");
-			// dialog.show();
 		}
 
 		protected String doInBackground(
